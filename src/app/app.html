@@ -1,0 +1,55 @@
+<div id='menu'>
+    <div class='logo'>
+        <img src='../assets/images/meetorium_icon.png'>
+        <div class='logo-text'>Meetorium</div>
+    </div>
+    <div class='location-insert-options'>
+        <!-- <div class='location-insert-option' (click)='showAddForm = true'>
+             <img src='../assets/images/plus.svg'/>
+         </div>-->
+        <div class='location-insert-option' (click)='showUploadInput = true'>
+            <img src='../assets/images/upload.svg'/>
+        </div>
+    </div>
+    <div class='location-list'>
+        <table>
+            <tr *ngFor='let location of locationList' class='location-item' [ngClass]='{"hidden": !location.visible}'>
+                <td class='company-logo-wrapper' [style.background-image]='"url(" + location.photoUrl + ")"'
+                    (click)='imageViewerSrc = location.photoUrl'>
+                </td>
+                <td class='compamy-name'><a href='{{location.websiteUrl}}' target='_blank'>{{location.companyName}}</a>
+                </td>
+                <td class='company-info' (click)='centerMapToLocation(location)'>
+                    {{location.street}}, {{location.city}}, {{location.country}}<br>
+                    Founder: {{location.founder}}
+                </td>
+                <td class='item-hide' (click)='toggleMarkerVisibility(location)'>
+                    <img *ngIf='location.visible' class='abs-center' src='../assets/images/visible.svg'>
+                    <img *ngIf='!location.visible' class='abs-center' src='../assets/images/hidden.svg'>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div *ngIf='imageViewerSrc != null' id='imageViewer' class='abs-center'  (click)='imageViewerSrc = null'>
+    <div class='background abs-center'></div>
+    <div class='image-wrapper abs-center' [style.background-image]='"url("+imageViewerSrc+")"'></div>
+</div>
+
+<!--<div *ngIf='showAddForm' id='addForm'></div>-->
+
+<div *ngIf='showUploadInput' id='uploadInput' class='abs-center'>
+    <div class='background abs-center'></div>
+    <div class='upload-area abs-center'>
+        <div class='close-upload-screen' (click)='showUploadInput = false'>
+            <img class='abs-center' src='../assets/images/close.svg'>
+        </div>
+        <img class='upload-image abs-center' src='../assets/images/upload.svg'/>
+        <input id='csvInput' class='abs-center' type="file" #csvReader (change)="fileUploadListener($event)"
+               accept=".csv"/>
+        <label for='csvInput'><span>Choose a file</span> or drag it to the upload area</label>
+    </div>
+</div>
+
+<app-map #map></app-map>

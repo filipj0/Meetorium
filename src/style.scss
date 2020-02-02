@@ -1,0 +1,14 @@
+html, body {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+
+  .abs-center {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}

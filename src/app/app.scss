@@ -1,0 +1,220 @@
+@font-face {
+  font-family: 'm&m';
+  src: url("../assets/fonts/AachenStdMedium.otf");
+}
+
+#menu {
+  position: absolute;
+  height: 100%;
+  width: 30%;
+  min-width: 500px;
+  overflow: hidden;
+  border-right: 3px solid coral;
+  z-index: 1;
+  background: white;
+
+  .logo {
+    position: relative;
+    width: 100%;
+    height: 5%;
+    overflow: hidden;
+    min-height: 50px;
+    text-align: center;
+
+    img {
+      height: 100%;
+      width: auto;
+      margin: auto;
+      left: 10%;
+      display: inline-block;
+    }
+
+    .logo-text {
+      height: 100%;
+      display: inline-block;
+      font-size: 2em;
+      color: coral;
+      margin-left: 15px;
+      position: relative;
+      top: -30%;
+      font-family: 'm&m';
+      font-weight: bold;
+    }
+  }
+
+  .location-insert-options {
+    position: relative;
+    width: 100%;
+    height: 10%;
+    min-height: 100px;
+    text-align: center;
+
+    .location-insert-option {
+      display: inline-block;
+      height: 80px;
+      width: 80px;
+      border-radius: 60px;
+      position: relative;
+      margin: 15px;
+
+      &:hover {
+        background-color: #e4e4e4;
+      }
+
+      img {
+        height: 50%;
+        width: auto;
+        position: absolute;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+    }
+  }
+
+  .location-list {
+    position: relative;
+    left: 5%;
+    width: 90%;
+    overflow-y: scroll;
+
+    table {
+      width: 100%;
+      height: auto;
+
+      tr {
+        height: 70px;
+        position: relative;
+        opacity: 1;
+        transition: opacity .2s linear;
+
+        &:hover {
+          background: #e4e4e4;
+        }
+
+        &.hidden {
+          opacity: .6;
+        }
+
+        .compamy-name {
+          width: 30%;
+          padding-left: 10px;
+
+          a {
+            color: coral;
+            font-size: 1em;
+            font-family: fantasy;
+          }
+        }
+
+        .company-logo-wrapper {
+          width: 20%;
+          background-position: left center;
+          background-size: contain;
+          background-repeat: no-repeat;
+        }
+
+        .company-info {
+          width: 40%;
+          color: coral;
+          font-size: 1em;
+          font-family: fantasy;
+          padding-left: 10px;
+        }
+
+        .item-hide {
+          position: relative;
+          width: 10%;
+
+          img {
+            height: 50%;
+            width: auto;
+          }
+        }
+      }
+    }
+  }
+}
+
+#imageViewer{
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+
+  .background {
+    width: 100%;
+    height: 100%;
+    opacity: 0.7;
+    background: darkgray;
+  }
+
+  .image-wrapper{
+    width: 100%;
+    height: 100%;
+    z-index:1;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+}
+
+#uploadInput {
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+
+  .background {
+    width: 100%;
+    height: 100%;
+    opacity: 0.7;
+    background: darkgray;
+  }
+
+  .upload-area {
+    background: white;
+    width: 80%;
+    height: 80%;
+    border-radius: 25px;
+
+    .close-upload-screen {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      height: 40px;
+      width: 40px;
+
+      img {
+        height: 60%;
+        width: auto;
+      }
+    }
+
+    .upload-image {
+      opacity: 0.2;
+      height: 50%;
+      width: auto;
+    }
+
+    input {
+      width: 0.1px;
+      height: 0.1px;
+      opacity: 0;
+    }
+
+    label {
+      position: absolute;
+      bottom: 5%;
+      width: 100%;
+      text-align: center;
+      font-size: 2em;
+      color: coral;
+
+      span {
+        cursor: pointer;
+        text-decoration: underline;
+      }
+    }
+  }
+}
