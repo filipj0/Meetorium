@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { LocationItem } from '../../app.component';
+import build from '@angular/cli/commands/build';
 
 @Component({
     selector: 'app-map',
@@ -11,6 +12,7 @@ export class MapComponent implements AfterViewInit {
 
     private map: google.maps.Map;
     private markers: Array<any> = [];
+    private defaultZoom: number = 12;
 
     constructor() {
     }
@@ -24,7 +26,7 @@ export class MapComponent implements AfterViewInit {
             let currentCoordinates = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
             let mapOptions = {
                 center: currentCoordinates,
-                zoom: 12
+                zoom: this.defaultZoom
             };
 
             this.map = new google.maps.Map(this.gMap.nativeElement, mapOptions);
@@ -54,7 +56,14 @@ export class MapComponent implements AfterViewInit {
         marker.markerData.setVisible(showMarker);
     }
 
-    public centerMap(latitude: number, longitude: number){
-      this.map.setCenter({lat: latitude, lng: longitude});
+    public centerMap(latitude: number, longitude: number) {
+        this.map.setCenter({ lat: latitude, lng: longitude });
+        this.map.setZoom(this.defaultZoom);
+    }
+
+    public centerMapToCurrentLocation() {
+        navigator.geolocation.getCurrentPosition((position: any) => {
+            this.centerMap(position.coords.latitude, position.coords.longitude);
+        });
     }
 }

@@ -1,13 +1,10 @@
 <div id='menu'>
-    <div class='logo'>
-        <img src='../assets/images/meetorium_icon.png'>
-        <div class='logo-text'>Meetorium</div>
-    </div>
-    <div class='location-insert-options'>
-        <!-- <div class='location-insert-option' (click)='showAddForm = true'>
-             <img src='../assets/images/plus.svg'/>
-         </div>-->
-        <div class='location-insert-option' (click)='showUploadInput = true'>
+    <div class='menu-header'>
+        <div class='logo'>
+            <img src='../assets/images/meetorium_icon.png'>
+            <div class='logo-text'>Meetorium</div>
+        </div>
+        <div class='location-upload-btn action-btn' (click)='showUploadInput = true'>
             <img src='../assets/images/upload.svg'/>
         </div>
     </div>
@@ -17,7 +14,7 @@
                 <td class='company-logo-wrapper' [style.background-image]='"url(" + location.photoUrl + ")"'
                     (click)='imageViewerSrc = location.photoUrl'>
                 </td>
-                <td class='compamy-name'><a href='{{location.websiteUrl}}' target='_blank'>{{location.companyName}}</a>
+                <td class='company-name'><a href='{{location.websiteUrl}}' target='_blank'>{{location.companyName}}</a>
                 </td>
                 <td class='company-info' (click)='centerMapToLocation(location)'>
                     {{location.street}}, {{location.city}}, {{location.country}}<br>
@@ -30,9 +27,23 @@
             </tr>
         </table>
     </div>
+    <div class='map-actions'>
+        <div class='action-btn' (click)='map.centerMapToCurrentLocation()'>
+            <img src='../assets/images/center.svg'/>
+        </div>
+        <div class='action-btn' (click)='findCafes()'>
+            <img src='../assets/images/cafe.svg'/>
+        </div>
+    </div>
+    <div class='footer'>
+        Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a
+            href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a><br>
+        Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a>
+        from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+    </div>
 </div>
 
-<div *ngIf='imageViewerSrc != null' id='imageViewer' class='abs-center'  (click)='imageViewerSrc = null'>
+<div *ngIf='imageViewerSrc != null' id='imageViewer' class='abs-center' (click)='imageViewerSrc = null'>
     <div class='background abs-center'></div>
     <div class='image-wrapper abs-center' [style.background-image]='"url("+imageViewerSrc+")"'></div>
 </div>

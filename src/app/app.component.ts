@@ -67,6 +67,10 @@ export class AppComponent {
     public centerMapToLocation(location: LocationItem) {
         this.map.centerMap(parseFloat(location.latitude), parseFloat(location.longitude));
     }
+
+    public findCafes() {
+        // todo - find nearby cafes for current radius
+    }
 }
 
 export class LocationItem {
